@@ -18,10 +18,7 @@
                 <a href="" class="active"><span class="las la-igloo"></span><span>Dashboard</span></a>
             </li>
             <li>
-                <a href="form.php"><span class="las la-users"></span><span>Customers</span></a>
-            </li>
-            <li>
-                <a href=""><span class="las la-clipboard-list"></span><span>Services</span></a>
+                <a href="form.php"><span class="las la-users"></span><span>New Customers</span></a>
             </li>
             <li>
                 <a href="tabledata.php"><span class="las la-shopping-bag"></span><span>Orders</span></a>
@@ -125,7 +122,7 @@
                                 if($conn->connect_error){
                                     die("Connection Failed:". $conn->connect_error);
                                 }
-                                $sql = "SELECT * FROM clients";
+                                $sql = "SELECT * FROM department";
                                 $result = $conn->query($sql);
 
                                 //check query execution
@@ -139,7 +136,7 @@
         <td>" . $row["owner"] . "</td>
         <td>" . $row["service"] . "</td>
         <td>" . $row["status"] . "</td>
-        <td>" . $row["mechanic"] . "</td>
+        <td>" . $row["machine"] . "</td>
       
     </tr>" ;
                                 }

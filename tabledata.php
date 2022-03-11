@@ -3,6 +3,10 @@
 <head>
     <title>Orders</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 
 
@@ -18,13 +22,10 @@
                 <a href="dashboard.php"><span class="las la-igloo"></span><span>Dashboard</span></a>
             </li>
             <li>
-                <a href="" class="active"><span class="las la-users"></span><span>Customers</span></a>
+                <a href="form.php"><span class="las la-users"></span><span>New Customers</span></a>
             </li>
             <li>
-                <a href=""><span class="las la-clipboard-list"></span><span>Services</span></a>
-            </li>
-            <li>
-                <a href="tabledata.php"><span class="las la-shopping-bag"></span><span>Orders</span></a>
+                <a href="" class="active"><span class="las la-shopping-bag"></span><span>Orders</span></a>
             </li>
             <li>
                 <a href=""><span class="las la-user-circle"></span><span>Accounts</span></a>
@@ -80,7 +81,7 @@
     if($conn->connect_error){
         die("Connection Failed:". $conn->connect_error);
     }
-    $sql = "SELECT * FROM clients";
+    $sql = "SELECT * FROM department";
     $result = $conn->query($sql);
 
 
@@ -96,7 +97,7 @@
         <td>" . $row["owner"] . "</td>
         <td>" . $row["service"] . "</td>
         <td>" . $row["status"] . "</td>
-        <td>" . $row["mechanic"] . "</td>
+        <td>" . $row["machine"] . "</td>
         <td>
             <a class='btn btn-primary btn-sm' href='update'>Update</a>
             <a class='btn btn-danger btn-sm' href='delete.php? deletenumber='.$number.''>Delete</a>
