@@ -28,12 +28,12 @@
             <label>
                 <input type="checkbox" value="remember-me"> Remember Me
             </label>
-            <button class="btn btn-primary float-end"><a href="#" class="text-white">Login</a></button>
+            <button class="btn btn-primary float-end"><a href="dashboard.php" class="text-white">Login</a></button>
 
 
         </div>
         <br>
-        <p class="text-center">Don't Have an Account? <a href="register.html">Create One</a></p>
+        <p class="text-center">Don't Have an Account? <a href="register.php">Create One</a></p>
 
     </form>
 </div>

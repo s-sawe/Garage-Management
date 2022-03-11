@@ -8,8 +8,7 @@
 <section id="Home">
     <div class="main">
         <h1 class="headings"> FUNDI <br> GARAGE</h1>
-        <button class="btn">
-           Admin Login
+        <button class="btn"><a href="login.php" class="text-white">Admin Login</a>
         </button>
     </div>
 </section>

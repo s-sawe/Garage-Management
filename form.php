@@ -16,20 +16,20 @@
     <fieldset>
         <legend>Client Information</legend>
         Number Plate:<br>
-        <input type="text" name="number" class="form-control">
+        <input type="text" name="number" class="form-control" required>
         <br>
         Owner:<br>
-        <input type="text" name="owner" class="form-control">
+        <input type="text" name="owner" class="form-control" required>
         <br>
         Service:
         <br>
-        <input type="text" name="service" class="form-control">
+        <input type="text" name="service" class="form-control" required>
         <br>
         Status:<br>
-        <input type="text" name="status" class="form-control">
+        <input type="text" name="status" class="form-control" required>
         <br>
         Mechanic:<br>
-        <input type="text" name="mechanic" class="form-control">
+        <input type="text" name="mechanic" class="form-control" required>
         <br><br>
         <input type="submit" name="sub" value="CREATE" class="btn btn-primary">
     </fieldset>

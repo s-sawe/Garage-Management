@@ -7,7 +7,7 @@ $mechanic = $_POST['mechanic'];
 
 $conn = new mysqli('localhost','root','','fundi');
 
-$sql = "INSERT INTO cars(number,owner,service,status,mechanic) VALUES ('$number','$owner','$service','$status','$mechanic')";
+$sql = "INSERT INTO clients(number,owner,service,status,mechanic) VALUES ('$number','$owner','$service','$status','$mechanic')";
 if($conn->query($sql) == TRUE){
     echo "Data Insert Successful";
 }else{

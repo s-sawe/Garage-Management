@@ -1,3 +1,50 @@
+<?php
+
+error_reporting(0);
+
+if(isset($_POST['submit'])){
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = md5($_POST['password']);
+    $confirmpassword = md5($_POST['confirmpassword']);
+
+    $server = "localhost";
+    $username ="root";
+    $password = "";
+    $database = "fundi";
+
+    $conn = new mysqli($server, $username, $password, $database);
+    if($conn->connect_error){
+        die("Connection Failed:". $conn->connect_error);
+    }
+
+    if($password == $confirmpassword){
+        $sql = "SELECT * FROM person WHERE email = '$email' AND password ='$password'";
+
+        $result = mysqli_query($conn, $sql);
+
+        if(!$result->num_rows > 0){
+            $sql = "INSERT INTO person('username', 'email', 'password')
+                  VALUES ('$username','$email','$password')";
+            $result = mysqli_query($conn, $sql);
+            if(!$result) {
+                echo "<script>alert('Registration Sucessful!')</script>";
+                $username = "";
+                $email = "";
+                $_POST['password'] = "";
+                $_POST['confirmpassword'] = "";
+            }else {
+                echo "<script>alert('Registration Failed!')</script>";
+            }
+        }else{
+            echo "<script>alert('Email Already Exists!')</script>";
+        }
+
+    }else{
+        echo "<script>alert('Password Mismatch!')</script>";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,33 +63,33 @@
     <div class="row">
         <div class="col-md-6 offset-md-3">
             <div class="signup-form">
-                <form action="" class="mt-5 border p-3 bg-light shadow">
+                <form action="" method="post" class="mt-5 border p-3 bg-light shadow">
                     <h4>Create Your Account</h4>
                     <br>
                     <div class="row">
                         <div class="mb-3 col-md-6">
-                            <label>First Name<span class="text-danger">*</span></label>
-                            <input type="text" name="fname" class="form-control" placeholder="Enter First Name">
+                            <label>Username<span class="text-danger">*</span></label>
+                            <input type="text" name="username" class="form-control" placeholder="Enter Username" value="<?php echo $username; ?>" required>
                         </div>
 
                         <div class="mb-3 col-md-6">
-                            <label>Last Name<span class="text-danger">*</span></label>
-                            <input type="text" name="lname" class="form-control" placeholder="Enter Last Name">
+                            <label>Email<span class="text-danger">*</span></label>
+                            <input type="text" name="email" class="form-control" placeholder="Enter Email" value="<?php echo $email ?>" required>
                         </div>
                         <div class="mb-3 col-md-12">
                             <label>Password<span class="text-danger">*</span></label>
-                            <input type="password" name="password" class="form-control" placeholder="Enter Password">
+                            <input type="password" name="password" class="form-control" placeholder="Enter Password" value="<?php echo $_POST['password']; ?>" required>
                         </div>
                         <div class="mb-3 col-md-12">
                             <label>Confirm Password<span class="text-danger">*</span></label>
-                            <input type="password" name="confirmpassword" class="form-control" placeholder="Confirm Password">
+                            <input type="password" name="confirmpassword" class="form-control" placeholder="Confirm Password" value="<?php echo $_POST['confirmpassword']; ?>" required>
                         </div>
                         <div class="mb-3 col-md-12">
-                            <button class="btn btn-primary float-end">Signup Now</button>
+                            <button name="submit" class="btn btn-primary float-end">Signup Now</button>
                         </div>
                     </div>
                 </form>
-                <p class="text-center mt-3 text-secondary">If you have an account, Please <a href="Login.html">Login Now</a></p>
+                <p class="text-center mt-3 text-secondary">If you have an account, Please <a href="login.php">Login Now</a></p>
             </div>
         </div>
     </div>

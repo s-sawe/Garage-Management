@@ -125,7 +125,7 @@
                                 if($conn->connect_error){
                                     die("Connection Failed:". $conn->connect_error);
                                 }
-                                $sql = "SELECT * FROM cars";
+                                $sql = "SELECT * FROM clients";
                                 $result = $conn->query($sql);
 
                                 //check query execution
